@@ -2,8 +2,9 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+
 import {
-  NewForm1 
+  TesteForm2 
  } from './ui-components';
 
 function App() {
@@ -29,8 +30,10 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <NewForm1 />
-      <div>TESTE !</div>
+      <TesteForm2
+        onSubmit={fields => { /* Handle form submission */}}
+      />
+      <div><p>TESTE !!!</p></div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>

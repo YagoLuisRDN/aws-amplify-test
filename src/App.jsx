@@ -4,6 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import {
+  ActionCard 
+ } from './ui-components';
+ 
+import {
   TesteForm2 
  } from './ui-components';
 
@@ -33,6 +37,9 @@ function App() {
       <TesteForm2
         onSubmit={fields => { /* Handle form submission */}}
       />
+      
+      <ActionCard />
+
       <div><p>TESTE !!!</p></div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more

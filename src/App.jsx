@@ -4,11 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import {
-  ActionCard 
- } from './ui-components';
- 
-import {
-  TesteForm2 
+  ActionCard,
+  ItemCard,
+  TesteForm2
  } from './ui-components';
 
 function App() {
@@ -39,6 +37,8 @@ function App() {
       />
       
       <ActionCard />
+
+      <ItemCard />
 
       <div><p>TESTE !!!</p></div>
       <p className="read-the-docs">

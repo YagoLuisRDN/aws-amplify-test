@@ -13,18 +13,22 @@ export default function TesteForm2(props) {
   const initialValues = {
     Field0: "",
     Field1: "",
+    Field2: "",
   };
   const [Field0, setField0] = React.useState(initialValues.Field0);
   const [Field1, setField1] = React.useState(initialValues.Field1);
+  const [Field2, setField2] = React.useState(initialValues.Field2);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setField0(initialValues.Field0);
     setField1(initialValues.Field1);
+    setField2(initialValues.Field2);
     setErrors({});
   };
   const validations = {
     Field0: [],
     Field1: [{ type: "Email" }],
+    Field2: [{ type: "Phone" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -54,6 +58,7 @@ export default function TesteForm2(props) {
         const modelFields = {
           Field0,
           Field1,
+          Field2,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -89,6 +94,7 @@ export default function TesteForm2(props) {
             const modelFields = {
               Field0: value,
               Field1,
+              Field2,
             };
             const result = onChange(modelFields);
             value = result?.Field0 ?? value;
@@ -113,6 +119,7 @@ export default function TesteForm2(props) {
             const modelFields = {
               Field0,
               Field1: value,
+              Field2,
             };
             const result = onChange(modelFields);
             value = result?.Field1 ?? value;
@@ -126,6 +133,32 @@ export default function TesteForm2(props) {
         errorMessage={errors.Field1?.errorMessage}
         hasError={errors.Field1?.hasError}
         {...getOverrideProps(overrides, "Field1")}
+      ></TextField>
+      <TextField
+        label="Telefone"
+        placeholder="número de telefone"
+        type="tel"
+        value={Field2}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              Field0,
+              Field1,
+              Field2: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.Field2 ?? value;
+          }
+          if (errors.Field2?.hasError) {
+            runValidationTasks("Field2", value);
+          }
+          setField2(value);
+        }}
+        onBlur={() => runValidationTasks("Field2", Field2)}
+        errorMessage={errors.Field2?.errorMessage}
+        hasError={errors.Field2?.hasError}
+        {...getOverrideProps(overrides, "Field2")}
       ></TextField>
       <Flex
         justifyContent="space-between"

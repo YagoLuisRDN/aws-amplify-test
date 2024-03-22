@@ -6,10 +6,15 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import { getOverrideProps, useNavigateAction } from "./utils";
 import { Button, Flex, Image, Rating, Text } from "@aws-amplify/ui-react";
 export default function ActionCard(props) {
   const { overrides, ...rest } = props;
+  const imageOnClick = useNavigateAction({
+    target: "_blank",
+    type: "url",
+    url: "https://redesignconsultoria.com.br/",
+  });
   return (
     <Flex
       gap="0"
@@ -36,6 +41,10 @@ export default function ActionCard(props) {
         position="relative"
         padding="0px 0px 0px 0px"
         objectFit="cover"
+        src="https://img.freepik.com/psd-gratuitas/camiseta-branca-isolada-com-cabide_125540-1304.jpg?w=900&t=st=1711113142~exp=1711113742~hmac=3af54d8d7a7eb4146865de94b48411a3aba8ee2b39b85cbcf6e8aafb7f7772b7"
+        onClick={() => {
+          imageOnClick();
+        }}
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex
